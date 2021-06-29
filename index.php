@@ -20,7 +20,7 @@
                 <i class="fas fa-th"></i>
             </div>
             <div class="menu__middleTop">
-                <h1>Basic CRUD UI</h1>
+                <h1>CRUD Website UI</h1>
             </div>
             <div class="menu__rightPanel">
                 <div class="menu__name">
@@ -39,22 +39,34 @@
     </div>
 
     <div id="content">
+       
         <?php
-
             $conn = mysqli_connect('localhost','root','','crud-website');
-            $sql = "SELECT * FROM toDO";
+            $sql = "SELECT requestNo,area,date,needDate,price,total,materials FROM toDO";
             $result = mysqli_query($conn,$sql);
+            $queryResults = mysqli_num_rows($result);
+            
+                if($queryResults > 0) {
+                    while($row = mysqli_fetch_assoc($result)) {
+                        ?>
 
-                while($line = mysqli_fetch_assoc($result)) {
-                    echo '<input type="checkbox">';
+                            <div class="content__container">
+                                <div class="content__checkbox">
+                                    <div class="content__checkElement"></div>
+                                </div>
+                                <div class="content__info"><?php $row['requestNo']; ?></div>
+                                <div class="content__info"><?php $row['area']; ?></div>
+                                <div class="content__info"><?php $row['date']; ?></div>
+                                <div class="content__info"><?php $row['needDate']; ?></div>
+                                <div class="content__info"><?php $row['price']; ?></div>
+                                <div class="content__info"><?php $row['total']; ?></div>
+                                <div class="content__info"><?php $row['materials']; ?></div>
+                            </div>
+
+                        <?php
+                    }
                 }
-
         ?>
-        <div class="content__container">
-            <div class="content_checkbox">
-                
-            </div>
-        </div>
     </div>
 
 </body>
