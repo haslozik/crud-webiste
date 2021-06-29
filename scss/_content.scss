@@ -4,36 +4,55 @@
     height: 100%;
     font-family: $font1;
 
-    .content__container {
+    .content-topEl {
+        border-bottom: 4px solid rgb(179, 179, 179) !important; 
+        font-weight: 600 !important; 
+        cursor: default !important;
+        &:hover {
+            background: #fff !important;
+        }
+    }
+
+    #content__container {
         width: 95%;
         margin: 0 auto;
         height: 80px;
         border-bottom: 1px solid lightgrey;
-        color: #000;
-
-        .content__checkbox {
-            float: left;
-            height: 80px;
-            width: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-right: 4px solid rgb(179, 179, 179);
-
-            .content__checkElement {
-                height: 30px;
-                width: 30px;
-                border: 1px solid #333;
-            }
+        color: #324564;
+        &:hover {
+            background: #eee;
         }
 
         .content__info {
             float: left;
-            width: calc((100% / 7) - 80px);
+            width: calc(100% / 8);
             height: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
+
+            ul {
+                list-style: none;
+                font-size: 12px;
+
+                li {
+                    cursor: pointer;
+                }
+
+                .content_list--delete {
+                    color: #f03131;
+                    font-size: 14px;
+                    &:hover {
+                        color: #bb2727;
+                    }
+                }
+            }
+
+            h6 {
+                margin-left: 4px;
+                font-size: 11px;
+                font-weight: 400;
+            }
         }
     }
 }

@@ -14,6 +14,7 @@
 </head>
 <body>
     
+    <!--menu-->
     <div class="menu">
         <div class="menu__top">
             <div class="menu__blocksIcon">
@@ -27,20 +28,31 @@
                     <h4>Wojciech Perliński</h4>
                 </div>
                 <div class="menu__panelIcons">
-                    <div class="menu__icon"><i class="fas fa-bell"></i></div>
-                    <div class="menu__icon"><i class="fas fa-envelope"></i></div>
-                    <div class="menu__icon"><i class="fas fa-cog"></i></div>
+                    <div class="menu__icon--1"><i class="fas fa-bell"></i></div>
+                    <div class="menu__icon--2"><i class="fas fa-envelope"></i></div>
+                    <div class="menu__icon--3"><i class="fas fa-cog"></i></div>
                 </div>
             </div>
         </div>
         <div class="menu__bottom">
-            <img src="img/search.png"><input type="text" class="menu__searchInput" placeholder="Search">
+            <div><img src="img/search.png"><input type="text" class="menu__searchInput" placeholder="Search"></div>
+            <h4>Dodaj <span>+</span></h4>
         </div>
     </div>
-
+    <!--conent-->
     <div id="content">
-       
+        <div id="content__container" class="content-topEl">
+            <div class="content__info">Request No.</div>
+            <div class="content__info">Area</div>
+            <div class="content__info">Date</div>
+            <div class="content__info">Need Date</div>
+            <div class="content__info">Price</div>
+            <div class="content__info">Total</div>
+            <div class="content__info">Materials</div>
+            <div class="content__info">Actions</div>
+        </div>
         <?php
+        
             $conn = mysqli_connect('localhost','root','','crud-website');
             $sql = "SELECT requestNo,area,date,needDate,price,total,materials FROM toDO";
             $result = mysqli_query($conn,$sql);
@@ -50,17 +62,19 @@
                     while($row = mysqli_fetch_assoc($result)) {
                         ?>
 
-                            <div class="content__container">
-                                <div class="content__checkbox">
-                                    <div class="content__checkElement"></div>
+                            <div id="content__container">
+                                <div class="content__info"><?= $row['requestNo']; ?></div>
+                                <div class="content__info"><?= $row['area']; ?></div>
+                                <div class="content__info"><?= $row['date']; ?></div>
+                                <div class="content__info"><?= $row['needDate']; ?></div>
+                                <div class="content__info"><?= $row['price']."$"; ?></div>
+                                <div class="content__info"><?= $row['total']."$"; ?></div>
+                                <div class="content__info"><?= $row['materials']."<h6>Material<br>requested</h6>"; ?></div>
+                                <div class="content__info">
+                                    <ul>
+                                        <li class="content_list--delete">Delete</li>
+                                    </ul>
                                 </div>
-                                <div class="content__info"><?php $row['requestNo']; ?></div>
-                                <div class="content__info"><?php $row['area']; ?></div>
-                                <div class="content__info"><?php $row['date']; ?></div>
-                                <div class="content__info"><?php $row['needDate']; ?></div>
-                                <div class="content__info"><?php $row['price']; ?></div>
-                                <div class="content__info"><?php $row['total']; ?></div>
-                                <div class="content__info"><?php $row['materials']; ?></div>
                             </div>
 
                         <?php
