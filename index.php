@@ -79,17 +79,18 @@
                         <?php
                     }
                 }
+                mysqli_close($conn);
         ?>
     </div>
     <!--add popup // db insert-->
     <div id="addPopup__shadow"></div>
     <div id="addPopup">
         <div class="addPopup__leftSide">
-            <h1>Add</h1>
+            <h1>Add item</h1>
             <div class="addPopup__cancelBtn" onclick="addPopupClose()"><p>Cancel</p></div>
         </div>
         <div class="addPopup__rightSide">
-            <form action="add.php">
+            <form action="index.php" method="POST">
                 <div class="addPopup__inputContainer">
                     <label for="area">Area</label>
                     <input type="text" name="area">
@@ -113,6 +114,32 @@
                 </div>
                 <input type="submit" value="Add">
             </form>
+            <?php
+
+                $conn = mysqli_connect('localhost','root','','crud-website');
+
+                if(isset($_POST['submit'])) {
+                    $area = $_POST['area'];
+                    $date = $_POST['date'];
+                    $needDate = $_POST['needDate'];
+                    $price = $_POST['price'];
+                    $total = $_POST['total'];
+                    $materials = $_POST['materials'];
+
+                    $sql = "INSERT INTO todo (area, date, needDate, price, total, materials) VALUES ('".$area."', '".$date."', '".$needDate."', '".$price."', '".$total."', '".$materials."')";
+
+                    $result = mysqli_query($conn,$sql);
+
+                    if($result) {
+                        echo "<meta http-equiv='refresh' content='0'>";
+                    } else {
+                        echo "Error";
+                    }
+                }
+
+                mysqli_close($conn);
+
+            ?>
         </div>
     </div>
 
