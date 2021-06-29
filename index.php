@@ -13,7 +13,6 @@
 
 </head>
 <body>
-    
     <!--menu-->
     <div class="menu">
         <div class="menu__top">
@@ -36,7 +35,7 @@
         </div>
         <div class="menu__bottom">
             <div><img src="img/search.png"><input type="text" class="menu__searchInput" placeholder="Search"></div>
-            <h4>Dodaj <span>+</span></h4>
+            <div id="menu__add" onclick="addPopupOpen()"><h4>Add +</h4></div>
         </div>
     </div>
     <!--conent-->
@@ -52,7 +51,7 @@
             <div class="content__info">Actions</div>
         </div>
         <?php
-        
+
             $conn = mysqli_connect('localhost','root','','crud-website');
             $sql = "SELECT requestNo,area,date,needDate,price,total,materials FROM toDO";
             $result = mysqli_query($conn,$sql);
@@ -82,6 +81,41 @@
                 }
         ?>
     </div>
+    <!--add popup // db insert-->
+    <div id="addPopup__shadow"></div>
+    <div id="addPopup">
+        <div class="addPopup__leftSide">
+            <h1>Add</h1>
+            <div class="addPopup__cancelBtn" onclick="addPopupClose()"><p>Cancel</p></div>
+        </div>
+        <div class="addPopup__rightSide">
+            <form action="add.php">
+                <div class="addPopup__inputContainer">
+                    <label for="area">Area</label>
+                    <input type="text" name="area">
+                </div>
+                <div class="addPopup__inputContainer">
+                    <label for="date">Date & Need Date</label><br>
+                    <input type="date" name="date">
+                    <input type="date" name="needDate">
+                </div>
+                <div class="addPopup__inputContainer">
+                    <label for="price">Price</label>
+                    <input type="number" name="price">
+                </div>
+                <div class="addPopup__inputContainer">
+                    <label for="total">Total Price</label>
+                    <input type="number" name="total">
+                </div>
+                <div class="addPopup__inputContainer">
+                    <label for="materials">Materials</label>
+                    <input type="text" name="materials">
+                </div>
+                <input type="submit" value="Add">
+            </form>
+        </div>
+    </div>
 
+<script src="app.js"></script>
 </body>
 </html>

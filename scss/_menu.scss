@@ -17,12 +17,10 @@
             align-items: center;
             justify-content: center;
             font-size: 40px;
-
-            i {
-                cursor: pointer;
-                &:hover {
-                    color: #ddd;
-                }
+            cursor: pointer;
+            &:hover {
+                background: #191f72;
+                color: #ddd;
             }
         }
 
@@ -116,14 +114,24 @@
             }
         }
 
-        h4 {
-            text-align: right;
-            font-weight: 200;
-            margin-right: 55px;
-            font-size: 25px;
+        #menu__add {
+            float: right;
+            height: 80px;
+            width: 210px;
+            background: #a90093;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
             &:hover {
+                background: #a0008b;
                 color: #ddd;
+            }
+
+            h4 {
+                text-align: right;
+                font-weight: 200;
+                font-size: 25px;
             }
         }
     }
