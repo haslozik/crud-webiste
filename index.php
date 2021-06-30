@@ -71,7 +71,7 @@
                                 <div class="content__info">
                                     <ul>
                                         <a href="index.php?edit=<?php echo $row['requestNo']; ?>"><li class="content_list--edit">Edit</li></a>
-                                        <a href="process.php?delete=<?php echo $row['requestNo']; ?>"><li class="content_list--delete">Delete</li></a>
+                                        <a href="process.php?delete=<?php echo $row['requestNo']; ?>"><li class="content_list--delete" id="content_list--delete">Delete</li></a>
                                     </ul>
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
                     <label for="materials">Materials</label>
                     <input type="text" name="materials">
                 </div>
-                <input type="submit" name="submit" value="Add">
+                <input type="submit" name="submit" id="addBtn" value="Add">
             </form>
         </div>
     </div>

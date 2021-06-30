@@ -12,6 +12,7 @@
 
         $conn->query("INSERT INTO todo (area, date, needDate, price, total, materials) VALUES ('".$area."', '".$date."', '".$needDate."', '".$price."', '".$total."', '".$materials."')") 
         or die($conn->error);
+        header('Location: index.php');
     }
 
     //delete
@@ -19,6 +20,7 @@
         $requestNo = $_GET['delete'];
         $conn->query("DELETE FROM todo WHERE requestNo=$requestNo") 
         or die($conn->error);
+        header('Location: index.php');
     }
 
 ?>
