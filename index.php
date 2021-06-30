@@ -34,7 +34,6 @@
             </div>
         </div>
         <div class="menu__bottom">
-            <div><img src="img/search.png"><input type="text" class="menu__searchInput" placeholder="Search"></div>
             <div id="menu__add" onclick="addPopupOpen()"><h4>Add +</h4></div>
         </div>
     </div>
@@ -62,7 +61,7 @@
                         ?>
 
                             <div id="content__container">
-                                <div class="content__info"><?= $row['requestNo']; ?></div>
+                                <div class="content__info" id="content__info--id"><?= $row['requestNo']."."; ?></div>
                                 <div class="content__info"><?= $row['area']; ?></div>
                                 <div class="content__info"><?= $row['date']; ?></div>
                                 <div class="content__info"><?= $row['needDate']; ?></div>
@@ -71,7 +70,8 @@
                                 <div class="content__info"><?= $row['materials']."<h6>Material<br>requested</h6>"; ?></div>
                                 <div class="content__info">
                                     <ul>
-                                        <li class="content_list--delete">Delete</li>
+                                        <a href="index.php?edit=<?php echo $row['requestNo']; ?>"><li class="content_list--edit">Edit</li></a>
+                                        <a href="process.php?delete=<?php echo $row['requestNo']; ?>"><li class="content_list--delete">Delete</li></a>
                                     </ul>
                                 </div>
                             </div>
@@ -90,7 +90,8 @@
             <div class="addPopup__cancelBtn" onclick="addPopupClose()"><p>Cancel</p></div>
         </div>
         <div class="addPopup__rightSide">
-            <form action="index.php" method="POST">
+                <?php require_once 'process.php'; ?>
+            <form action="process.php" method="POST">
                 <div class="addPopup__inputContainer">
                     <label for="area">Area</label>
                     <input type="text" name="area">
@@ -112,34 +113,8 @@
                     <label for="materials">Materials</label>
                     <input type="text" name="materials">
                 </div>
-                <input type="submit" value="Add">
+                <input type="submit" name="submit" value="Add">
             </form>
-            <?php
-
-                $conn = mysqli_connect('localhost','root','','crud-website');
-
-                if(isset($_POST['submit'])) {
-                    $area = $_POST['area'];
-                    $date = $_POST['date'];
-                    $needDate = $_POST['needDate'];
-                    $price = $_POST['price'];
-                    $total = $_POST['total'];
-                    $materials = $_POST['materials'];
-
-                    $sql = "INSERT INTO todo (area, date, needDate, price, total, materials) VALUES ('".$area."', '".$date."', '".$needDate."', '".$price."', '".$total."', '".$materials."')";
-
-                    $result = mysqli_query($conn,$sql);
-
-                    if($result) {
-                        echo "<meta http-equiv='refresh' content='0'>";
-                    } else {
-                        echo "Error";
-                    }
-                }
-
-                mysqli_close($conn);
-
-            ?>
         </div>
     </div>
 

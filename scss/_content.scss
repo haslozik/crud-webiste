@@ -13,6 +13,10 @@
         }
     }
 
+    #content__info--id {
+        border-right: 1px solid rgb(179, 179, 179) !important;
+    }
+
     #content__container {
         width: 95%;
         margin: 0 auto;
@@ -31,12 +35,24 @@
             align-items: center;
             justify-content: center;
 
+            a {
+                text-decoration: none;
+            }
+
             ul {
                 list-style: none;
                 font-size: 12px;
 
                 li {
                     cursor: pointer;
+                }
+
+                .content_list--edit {
+                    color: #ff9900;
+                    font-size: 14px;
+                    &:hover {
+                        color: #d37f00;
+                    }
                 }
 
                 .content_list--delete {
