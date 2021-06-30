@@ -1,5 +1,4 @@
 <?php
-
     //add
     $conn = mysqli_connect('localhost','root','','crud-website') or die($conn);
 
@@ -13,14 +12,13 @@
 
         $conn->query("INSERT INTO todo (area, date, needDate, price, total, materials) VALUES ('".$area."', '".$date."', '".$needDate."', '".$price."', '".$total."', '".$materials."')") 
         or die($conn->error);
-
     }
 
     //delete
     if(isset($_GET['delete'])) {
         $requestNo = $_GET['delete'];
         $conn->query("DELETE FROM todo WHERE requestNo=$requestNo") 
-        or die($conn->error);;
+        or die($conn->error);
     }
 
 ?>

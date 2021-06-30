@@ -20,7 +20,7 @@
                 <i class="fas fa-th"></i>
             </div>
             <div class="menu__middleTop">
-                <h1>CRUD Website UI</h1>
+                <h1>CRUD Simple UI</h1>
             </div>
             <div class="menu__rightPanel">
                 <div class="menu__name">
