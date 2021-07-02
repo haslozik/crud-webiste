@@ -37,6 +37,16 @@
             <div id="menu__add" onclick="addPopupOpen()"><h4>Add +</h4></div>
         </div>
     </div>
+    <!--alerts-->
+    <?php if(isset($_SESSION['message-add'])): ?>
+        <div id="alert-add">
+            <?php
+            echo "elo";
+                echo $_SESSION['message-add'];
+                unset($_SESSION['message-add']);
+            ?>
+        </div>
+    <?php endif ?>
     <!--conent-->
     <div id="content">
         <div id="content__container" class="content-topEl">

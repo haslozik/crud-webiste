@@ -108,11 +108,17 @@
                     outline: none;
                     border-radius: 4px;
                     &::-webkit-datetime-edit {
-                        display: none;
+                        margin-left: 10px;
+                        font-family: $font1;
                     }
                     &::-webkit-calendar-picker-indicator {
-                        background: transparent;
-                        width: 100%;
+                        margin: 0 auto;
+                        content: 'Pick date';
+                    }
+                    &::-webkit-calendar-picker-indicator {
+                        background-color: #a90093;
+                        border-radius: 7px;
+                        margin-right: 10px;
                     }
                 }
             }
