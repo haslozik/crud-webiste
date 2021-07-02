@@ -80,8 +80,13 @@
                                 <div class="content__info"><?= $row['materials']."<h6>Material<br>requested</h6>"; ?></div>
                                 <div class="content__info">
                                     <ul>
-                                        <a href="index.php?edit=<?php echo $row['requestNo']; ?>"><li class="content_list--edit">Edit</li></a>
-                                        <a href="process.php?delete=<?php echo $row['requestNo']; ?>"><li class="content_list--delete" id="content_list--delete">Delete</li></a>
+                                        <a href="index.php?edit=<?php echo $row['requestNo']; ?>" onclick="addPopupOpen()">
+                                            <li class="content_list--edit">Edit</li>
+                                        </a>
+
+                                        <a href="process.php?delete=<?php echo $row['requestNo']; ?>">
+                                            <li class="content_list--delete" id="content_list--delete">Delete</li>
+                                        </a>
                                     </ul>
                                 </div>
                             </div>
@@ -104,24 +109,24 @@
             <form action="process.php" method="POST">
                 <div class="addPopup__inputContainer">
                     <label for="area">Area</label>
-                    <input type="text" name="area">
+                    <input type="text" name="area" value="<?php echo $area; ?>" placeholder="Enter the area">
                 </div>
                 <div class="addPopup__inputContainer">
                     <label for="date">Date & Need Date</label><br>
-                    <input type="date" name="date">
-                    <input type="date" name="needDate">
+                    <input type="date" name="date" value="<?php echo $date; ?>" >
+                    <input type="date" name="needDate" value="<?php echo $needDate; ?>" >
                 </div>
                 <div class="addPopup__inputContainer">
                     <label for="price">Price</label>
-                    <input type="number" name="price">
+                    <input type="number" name="price" value="<?php echo $price; ?>" placeholder="Enter the price">
                 </div>
                 <div class="addPopup__inputContainer">
                     <label for="total">Total Price</label>
-                    <input type="number" name="total">
+                    <input type="number" name="total" value="<?php echo $total; ?>" placeholder="Enter the total price">
                 </div>
                 <div class="addPopup__inputContainer">
                     <label for="materials">Materials</label>
-                    <input type="text" name="materials">
+                    <input type="text" name="materials" value="<?php echo $materials; ?>" placeholder="Enter the number of materials">
                 </div>
                 <input type="submit" name="submit" id="addBtn" value="Add">
             </form>

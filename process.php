@@ -1,5 +1,12 @@
 <?php
 
+    $area = '';
+    $date = '';
+    $needDate = '';
+    $price = '';
+    $total = '';
+    $materials = '';
+
     //add
     $conn = mysqli_connect('localhost','root','','crud-website') or die($conn);
 
@@ -27,18 +34,18 @@
 
     //edit
     if(isset($_GET['edit'])) {
-        $id = $_GET['id'];
+        $requestNo = $_GET['edit'];
         $result = $conn->query("SELECT requestNo,area,date,needDate,price,total,materials FROM toDO WHERE requestNo = $id")
         or die($conn->error);
 
         if(count($result)==1) {
             $row = $result->fetch_array();
-            $area = $_POST['area'];
-            $date = $_POST['date'];
-            $needDate = $_POST['needDate'];
-            $price = $_POST['price'];
-            $total = $_POST['total'];
-            $materials = $_POST['materials'];
+            $area = $row['area'];
+            $date = $row['date'];
+            $needDate = $row['needDate'];
+            $price = $row['price'];
+            $total = $row['total'];
+            $materials = $row['materials'];
         }
     }
 

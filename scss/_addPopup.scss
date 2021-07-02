@@ -96,13 +96,17 @@
                     padding-left: 10px;
                     font-weight: 200;
                     border-radius: 4px;
+                    &::placeholder {
+                        font-family: $font1;
+                        color: #fff;
+                    }
                 }
 
                 input[type=date] {
                     float: left;
                     width: calc(50%);
                     height: 40px;
-                    color: #fff;
+                    color: #ccc;
                     border: 1px solid #2c3595;
                     background: transparent;
                     outline: none;
@@ -129,14 +133,14 @@
                 left: -335px;
                 width: 250px;
                 background: #a0008b;
-                color: #fff;
                 height: 46px;
                 outline: none;
-                font-weight: 200;
-                font-size: 20px;
                 text-align: center;
                 cursor: pointer;
                 border: 1px solid #a0008b;
+                color: #fff;
+                font-weight: 200;
+                font-size: 20px;
                 &:hover {
                     background: #830071;
                 }
