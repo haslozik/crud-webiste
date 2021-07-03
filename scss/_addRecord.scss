@@ -1,2 +1,54 @@
+#addRecord {
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $font1;
 
+    .addRecord__container {
+        height: 600px;
+        width: 900px;
+        margin-top: 160px;
 
+        h1 {
+            font-weight: 400;
+            margin: 0 0 20px 0;
+        }
+
+        form {
+            .addRecord__inputContainer {
+                display: flex;
+                flex-direction: column;
+
+                label {
+                    margin-top: 14px;
+                }
+
+                input[type=text], input[type=number], input[type=date] {
+                    width: 100%;
+                    height: 35px;
+                    padding: 0 10px 0 10px;
+                    outline: none;
+                    border: 1px solid #000;
+                    border-radius: 0;
+                    font-family: $font1;
+                }
+            }
+
+            input[type=submit] {
+                margin-top: 20px;
+                width: 150px;
+                height: 33px;
+                border-radius: 0;
+                cursor: pointer;
+                background: transparent;
+                border: 1px solid #000;
+                &:hover {
+                    border: 1px solid #a90093;
+                    color: #a0008b;
+                }
+            }
+        }
+    }
+}

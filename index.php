@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,15 +37,8 @@
             <a href="#addRecord" id="menu__add"><div><h4>Add +</h4></div></a>
         </div>
     </div>
-    <!--alerts-->
-    <?php if(isset($_SESSION['message-type'])): ?>
-        <div id="alert">
-            <?php
-                echo $_SESSION['message-type'];
-                unset($_SESSION['message-type']);
-            ?>
-        </div>
-    <?php endif ?>
+
+    <?php require_once 'process.php'; ?>
     <!--conent-->
     <div id="content">
         <div id="content__container" class="content-topEl">
@@ -80,7 +72,7 @@
                                 <div class="content__info"><?= $row['materials']."<h6>Material<br>requested</h6>"; ?></div>
                                 <div class="content__info">
                                     <ul>
-                                        <a href="index.php?edit=<?php echo $row['requestNo']; ?>">
+                                        <a href="index.php?edit=<?php echo $row['requestNo']; ?>" onclick="hide()" id="edit">
                                             <li class="content_list--edit">Edit</li>
                                         </a>
 
@@ -97,38 +89,44 @@
                 mysqli_close($conn);
         ?>
     </div>
-    
-    <?php require_once 'process.php'; ?>
     <!--addRecord section-->
 
     <div id="addRecord">
         <div class="addRecord__container">
-            <!--left side-->
-            <div class="addRecord__leftSide"></div>
-            <!--right side-->
+        <h1>Add to list</h1>
             <form action="process.php" method="POST">
+                    <input type="hidden" name="id" value="<?php echo $id; ?>">
                 <div class="addRecord__inputContainer">
                     <label for="area">Area</label>
-                    <input type="text" name="area" value="" placeholder="Enter the area">
+                    <input type="text" name="area" value="<?php echo $area; ?>" placeholder="Enter the area">
                 </div>
                 <div class="addRecord__inputContainer">
-                    <label for="date">Date & Need Date</label><br>
-                    <input type="date" name="date" value="" >
-                    <input type="date" name="needDate" value="" >
+                    <label for="date">Date</label>
+                    <input type="date" name="date" value="<?php echo $date; ?>" >
+                </div>
+                <div class="addRecord__inputContainer">
+                    <label for="date">Need Date</label>
+                    <input type="date" name="needDate" value="<?php echo $needDate; ?>" >
                 </div>
                 <div class="addRecord__inputContainer">
                     <label for="price">Price</label>
-                    <input type="number" name="price" value="" placeholder="Enter the price">
+                    <input type="number" name="price" value="<?php echo $price; ?>" placeholder="Enter the price">
                 </div>
                 <div class="addRecord__inputContainer">
                     <label for="total">Total Price</label>
-                    <input type="number" name="total" value="" placeholder="Enter the total price">
+                    <input type="number" name="total" value="<?php echo $total; ?>" placeholder="Enter the total price">
                 </div>
                 <div class="addRecord__inputContainer">
                     <label for="materials">Materials</label>
-                    <input type="text" name="materials" value="" placeholder="Enter the number of materials">
+                    <input type="text" name="materials" value="<?php echo $materials; ?>" placeholder="Enter the number of materials">
                 </div>
-                <input type="submit" name="submit" id="addBtn" value="Add">
+
+                    <?php if($update == true): ?>
+                        <input type="submit" name="update" id="addBtn" value="Update">
+                    <?php else: ?>
+                    <input type="submit" name="submit" id="addBtn" value="Add">
+                    <?php endif; ?>
+
             </form>
         </div>
     </div>
