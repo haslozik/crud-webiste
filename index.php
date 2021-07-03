@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,16 +35,15 @@
             </div>
         </div>
         <div class="menu__bottom">
-            <div id="menu__add" onclick="addPopupOpen()"><h4>Add +</h4></div>
+            <a href="#addRecord" id="menu__add"><div><h4>Add +</h4></div></a>
         </div>
     </div>
     <!--alerts-->
-    <?php if(isset($_SESSION['message-add'])): ?>
-        <div id="alert-add">
+    <?php if(isset($_SESSION['message-type'])): ?>
+        <div id="alert">
             <?php
-            echo "elo";
-                echo $_SESSION['message-add'];
-                unset($_SESSION['message-add']);
+                echo $_SESSION['message-type'];
+                unset($_SESSION['message-type']);
             ?>
         </div>
     <?php endif ?>
@@ -80,7 +80,7 @@
                                 <div class="content__info"><?= $row['materials']."<h6>Material<br>requested</h6>"; ?></div>
                                 <div class="content__info">
                                     <ul>
-                                        <a href="index.php?edit=<?php echo $row['requestNo']; ?>" onclick="addPopupOpen()">
+                                        <a href="index.php?edit=<?php echo $row['requestNo']; ?>">
                                             <li class="content_list--edit">Edit</li>
                                         </a>
 
@@ -97,36 +97,36 @@
                 mysqli_close($conn);
         ?>
     </div>
-    <!--add popup // db insert-->
-    <div id="addPopup__shadow"></div>
-    <div id="addPopup">
-        <div class="addPopup__leftSide">
-            <h1>Add item</h1>
-            <div class="addPopup__cancelBtn" onclick="addPopupClose()"><p>Cancel</p></div>
-        </div>
-        <div class="addPopup__rightSide">
-                <?php require_once 'process.php'; ?>
+    
+    <?php require_once 'process.php'; ?>
+    <!--addRecord section-->
+
+    <div id="addRecord">
+        <div class="addRecord__container">
+            <!--left side-->
+            <div class="addRecord__leftSide"></div>
+            <!--right side-->
             <form action="process.php" method="POST">
-                <div class="addPopup__inputContainer">
+                <div class="addRecord__inputContainer">
                     <label for="area">Area</label>
-                    <input type="text" name="area" value="<?php echo $area; ?>" placeholder="Enter the area">
+                    <input type="text" name="area" value="" placeholder="Enter the area">
                 </div>
-                <div class="addPopup__inputContainer">
+                <div class="addRecord__inputContainer">
                     <label for="date">Date & Need Date</label><br>
-                    <input type="date" name="date" value="<?php echo $date; ?>" >
-                    <input type="date" name="needDate" value="<?php echo $needDate; ?>" >
+                    <input type="date" name="date" value="" >
+                    <input type="date" name="needDate" value="" >
                 </div>
-                <div class="addPopup__inputContainer">
+                <div class="addRecord__inputContainer">
                     <label for="price">Price</label>
-                    <input type="number" name="price" value="<?php echo $price; ?>" placeholder="Enter the price">
+                    <input type="number" name="price" value="" placeholder="Enter the price">
                 </div>
-                <div class="addPopup__inputContainer">
+                <div class="addRecord__inputContainer">
                     <label for="total">Total Price</label>
-                    <input type="number" name="total" value="<?php echo $total; ?>" placeholder="Enter the total price">
+                    <input type="number" name="total" value="" placeholder="Enter the total price">
                 </div>
-                <div class="addPopup__inputContainer">
+                <div class="addRecord__inputContainer">
                     <label for="materials">Materials</label>
-                    <input type="text" name="materials" value="<?php echo $materials; ?>" placeholder="Enter the number of materials">
+                    <input type="text" name="materials" value="" placeholder="Enter the number of materials">
                 </div>
                 <input type="submit" name="submit" id="addBtn" value="Add">
             </form>

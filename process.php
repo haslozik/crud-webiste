@@ -21,6 +21,9 @@
         $conn->query("INSERT INTO todo (area, date, needDate, price, total, materials) VALUES ('".$area."', '".$date."', '".$needDate."', '".$price."', '".$total."', '".$materials."')") 
         or die($conn->error);
 
+        $_SESSION['message_type'] = "added";
+        $_SESSION['message'] = "Record has been added";
+
         header('Location: index.php');
     }
 
@@ -29,6 +32,10 @@
         $requestNo = $_GET['delete'];
         $conn->query("DELETE FROM todo WHERE requestNo=$requestNo") 
         or die($conn->error);
+
+        $_SESSION['message_type'] = "deleted";
+        $_SESSION['message'] = "Record has been deleted";
+
         header('Location: index.php');
     }
 
